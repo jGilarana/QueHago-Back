@@ -19,7 +19,7 @@ const Event = sequelize.define('event', {
       type: DataTypes.DATE,
       allowNull: false
     },
-    room_number: {
+    rooms: {
       type: DataTypes.INTEGER
     },
     minimum_age: {
