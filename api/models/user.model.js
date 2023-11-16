@@ -10,4 +10,4 @@ const User = sequelize.define('user', {
 	}
 })
 
-module.exports = User // Export the model definition so it can be used in other files
+

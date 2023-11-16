@@ -29,4 +29,5 @@ async function syncModels() {
 }
 
 
+
 module.exports = { checkConn, syncModels, sequelize }
