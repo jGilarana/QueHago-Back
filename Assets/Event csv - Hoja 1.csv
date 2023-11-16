@@ -1,0 +1,6 @@
+id,title,genre,address,date,room_number,minimum_age,createdAt,updatedAt,clubId
+1,Chester 9º Aniversario,"Reggaeton, R&B, Dancehall","C. Simon Bolivar, 3 Las Palmas de Gran Canaria, Las Palmas",2023-11-17,1,18,9999-12-31,9999-12-31,1
+2,Suncode Nochebuena,"Tech-House, House, Progressive","C.C. las Arenas, 35010 Las Palmas de Gran Canaria, Las Palmas",2023-12-24,1,21,9999-12-31,9999-12-31,3
+3,"Oasis Taraka by ""GORDO""","Tech-House, House, Dance House",Barranco del Aguila,2023-12-08,2,21,9999-12-31,9999-12-31,4
+4,Kalima Boat Party,"R&B, House, Regaetton, Dance, DanceHall, Trap",Secret Location,2023-12-18,2,18,9999-12-31,9999-12-31,5
+5,University Dia 31,"R&B, House, Regaetton, Dance, DanceHall","Intercambiador de Santa Catalina, Las Palmas de Gran Canaria",2023-12-31,2,18,9999-12-31,9999-12-31,2
