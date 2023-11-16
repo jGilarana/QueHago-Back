@@ -9,10 +9,10 @@ const Club = sequelize.define('club', {
       type: DataTypes.STRING(40)
     },
     telephone: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER(20)
     },
     address: {
-      type: DataTypes.STRING(255)
+      type: DataTypes.CHAR(255)
     },
     join_date: {
       type: DataTypes.DATE,

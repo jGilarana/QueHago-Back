@@ -8,20 +8,20 @@ function setRelations() {
 
 
     Club.hasMany(Event);
-    Event.belongsTo(Club, { foreignKey: 'club_id' })  //
+    Event.belongsTo(Club, { foreignKey: 'clubId' })  //
 
 
     User.hasMany(Rating);
-    Rating.belongsTo(User, { foreignKey: 'user_id' });;
+    Rating.belongsTo(User, { foreignKey: 'userId' });;
 
     Event.hasMany(Rating);
-    Rating.belongsTo(Event, { foreignKey: 'event_id' })
+    Rating.belongsTo(Event, { foreignKey: 'eventId' })
 
-    User.hasMany(Favorite, { foreignKey: 'user_id' })
+    User.hasMany(Favorite, { foreignKey: 'userId' })
     Favorite.belongsTo(User)
 
 
-    Event.hasMany(Favorite, { foreignKey: 'event_id' })
+    Event.hasMany(Favorite, { foreignKey: 'eventId' })
     Favorite.belongsTo(Event)
 }
 

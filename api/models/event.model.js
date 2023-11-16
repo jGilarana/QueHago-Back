@@ -3,25 +3,30 @@ const {sequelize} = require('../../database/index') // Our connection's instance
 
 
 const Event = sequelize.define('event', {
-    name: {
-      type: DataTypes.STRING(40),
+    title: {
+      type: DataTypes.CHAR(255),
       allowNull: false
     },
     genre: {
-      type: DataTypes.STRING(40),
+      type: DataTypes.STRING(80),
       allowNull: false
     },
     address: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(120),
       allowNull: false
     },
     date: {
       type: DataTypes.DATE,
       allowNull: false
     },
+    room_number: {
+      type: DataTypes.INTEGER
+    },
     minimum_age: {
       type: DataTypes.INTEGER
     }
   });
+
+  
 
   module.exports = Event
