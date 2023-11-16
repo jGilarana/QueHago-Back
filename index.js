@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
+const setRelations = require("./database/model")
 
 const app = express()
 
@@ -10,7 +11,7 @@ const app = express()
 async function connectDB() {
 
     await checkConn()
-    /* setRelations() */
+     setRelations() 
     await syncModels()
 
 }
