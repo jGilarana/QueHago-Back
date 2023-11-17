@@ -17,12 +17,15 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  role: {
-    type: DataTypes.STRING
+  telephone: {
+    type: DataTypes.INTEGER,
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  role: {
+    type: DataTypes.STRING
   },
   joinDate: {
     type: DataTypes.DATE,

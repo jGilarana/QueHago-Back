@@ -1,7 +1,7 @@
-id,firstName,lastName,birthDate,password,role,email,joinDate,createdAt,updatedAt
-1,Jorge,Gil de Arana,1998-11-13,Reboot!23,admin,jorgereboot@gmail.com,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
-2,Ana,Ruiz,1985-08-22,AnaRuiz_1985,usuario,ana.ruiz@email.com,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
-3,Pablo,López,2005-10-11,PabloLpz_123,usuario,pablo.lopez@email.com,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
-4,María,Fernández,1998-01-31,Maria2023,usuario,maria.fernandez@email.com,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
-5,Javier,Ramírez,2000-05-05,JavierRam88,usuario,javier.ramirez@email.com,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
-6,Carlos,González,1990-05-15,$%&Carlos123,usuario,carlos.gonzalez@email.com,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
+id,firstName,lastName,birthDate,password,telephone,email,role,joinDate,createdAt,updatedAt
+1,Jorge,Gil de Arana,1998-11-13,Reboot!23,600115760,jorgereboot@gmail.com,admin,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
+2,Ana,Ruiz,1985-08-22,AnaRuiz_1985,601123456,ana.ruiz@email.com,usuario,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
+3,Pablo,López,2005-10-11,PabloLpz_123,609876543,pablo.lopez@email.com,usuario,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
+4,María,Fernández,1998-01-31,Maria2023,616141919,maria.fernandez@email.com,usuario,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
+5,Javier,Ramírez,2000-05-05,JavierRam88,772426584,javier.ramirez@email.com,usuario,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
+6,Carlos,González,1990-05-15,$%&Carlos123,928547652,carlos.gonzalez@email.com,usuario,2023-11-16,9999-12-31 0:00:00,9999-12-31 0:00:00
