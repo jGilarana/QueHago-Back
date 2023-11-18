@@ -1,38 +1,38 @@
-const { DataTypes } = require("sequelize")
-const { sequelize } = require("../../database/index") // Our connection's instance
+const { DataTypes } = require('sequelize');
+const {sequelize} = require('../../database/index') // Our connection's instance
 
-const User = sequelize.define("user", {
+const User = sequelize.define('user', {
   firstName: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   lastName: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING
   },
   birthDate: {
     type: DataTypes.DATE,
-    allowNull: false,
+    allowNull: false
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   telephone: {
     type: DataTypes.INTEGER,
   },
   email: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   role: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING
   },
   joinDate: {
     type: DataTypes.DATE,
     defaultValue: function () {
       return new Date()
-    },
-  },
+  }
+  }
 })
 
 module.exports = User
