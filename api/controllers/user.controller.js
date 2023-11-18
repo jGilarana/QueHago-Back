@@ -42,7 +42,7 @@ async function updateUser(req, res) {
 }
 async function deleteUser(req, res) {
   try {
-    const user = await User.destroy(req.params.id)
+    const user = await User.destroy({ where: { id: req.params.id } })
     return res.status(200).json(user)
   } catch (error) {
     return res.status(500).send(error.message)

@@ -35,7 +35,8 @@ async function updateClub(req, res) {
     if (!clubExists) {
       res.status(404).send("No club found")
     }
-    return res.status(200).json(club)
+
+    return res.status(200).send("club updated")
   } catch (error) {
     res.status(403).send(error.message)
   }
@@ -43,7 +44,7 @@ async function updateClub(req, res) {
 
 async function deleteClub(req, res) {
   try {
-    const club = await Club.destroy(req.params.id)
+    const club = await Club.destroy({ where: { id: req.params.id } })
     return res.status(200).json(club)
   } catch (error) {
     return res.status(500).send(error.message)

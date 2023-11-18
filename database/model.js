@@ -6,7 +6,7 @@ const User = require("../api/models/user.model")
 
 function setRelations() {
   Club.hasMany(Event)
-  Event.belongsTo(Club, { foreignKey: "clubId" }) //
+  Event.belongsTo(Club, { onDelete: 'CASCADE', onUpdate: 'CASCADE', foreignKey: "clubId" }) //
 
   User.hasMany(Rating)
   Rating.belongsTo(User, { onDelete: "CASCADE", foreignKey: "userId" })

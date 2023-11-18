@@ -45,7 +45,7 @@ async function updateFavorite(req, res) {
 
 async function deleteFavorite(req, res) {
   try {
-    const favorite = await Favorite.destroy(req.params.id)
+    const favorite = await Favorite.destroy({ where: { id: req.params.id } })
     return res.status(200).json(favorite)
   } catch (error) {
     return res.status(500).send(error.message)

@@ -33,17 +33,17 @@ const updateEvent = async (req, res) => {
       where: { id: req.params.id },
     })
     if (!eventExists) {
-      res.status(404).send("No event found")
+     return res.status(404).send("No event found")
     }
     return res.status(200).json(event)
   } catch (error) {
-    res.status(400).error(error.message)
+    res.status(400).send(error.message)
   }
 }
 
 async function deleteEvent(req, res) {
   try {
-    const event = await Event.destroy(req.params.id)
+    const event = await Event.destroy({ where: { id: req.params.id } })
     return res.status(200).json(event)
   } catch (error) {
     return res.status(500).send(error.message)
