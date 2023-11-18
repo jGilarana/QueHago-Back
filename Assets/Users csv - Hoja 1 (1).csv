@@ -1,0 +1,7 @@
+id,firstName,lastName,birthDate,password,telephone,email,role,createdAt,updatedAt
+1,Jorge,Gil de Arana,1998-11-13,Reboot!23,600115760,jorgereboot@gmail.com,admin,9999-12-31 0:00:00,9999-12-31 0:00:00
+2,Ana,Ruiz,1985-08-22,AnaRuiz_1985,601123456,ana.ruiz@email.com,user,9999-12-31 0:00:00,9999-12-31 0:00:00
+3,Pablo,López,2005-10-11,PabloLpz_123,609876543,pablo.lopez@email.com,user,9999-12-31 0:00:00,9999-12-31 0:00:00
+4,María,Fernández,1998-01-31,Maria2023,616141919,maria.fernandez@email.com,user,9999-12-31 0:00:00,9999-12-31 0:00:00
+5,Javier,Ramírez,2000-05-05,JavierRam88,772426584,javier.ramirez@email.com,user,9999-12-31 0:00:00,9999-12-31 0:00:00
+6,Carlos,González,1990-05-15,$%&Carlos123,928547652,carlos.gonzalez@email.com,user,9999-12-31 0:00:00,9999-12-31 0:00:00
