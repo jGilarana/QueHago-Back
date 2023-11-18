@@ -14,10 +14,10 @@ const Club = sequelize.define("club", {
   address: {
     type: DataTypes.CHAR(255),
   },
-  expiration_date: {
+  expirationDate: {
     type: DataTypes.DATE,
   },
-  subscription_status: {
+  subscriptionStatus: {
     type: DataTypes.BOOLEAN,
   },
 })
