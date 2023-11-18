@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize")
 const { sequelize } = require("../../database/index") // Our connection's instance
 
 const Club = sequelize.define("club", {
-  company_name: {
+  companyName: {
     type: DataTypes.STRING(40),
   },
   email: {
@@ -13,12 +13,6 @@ const Club = sequelize.define("club", {
   },
   address: {
     type: DataTypes.CHAR(255),
-  },
-  join_date: {
-    type: DataTypes.DATE,
-    defaultValue: function () {
-      return new Date()
-    },
   },
   expiration_date: {
     type: DataTypes.DATE,
