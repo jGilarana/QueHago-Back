@@ -32,7 +32,7 @@ const updateEvent = async (req, res) => {
     const [event, eventExists] = await Event.update(req.body, {
       where: { id: req.params.id },
     })
-    if (!eventExists) {
+    if (eventExists === 0) {
      return res.status(404).send("No event found")
     }
     return res.status(200).json(event)

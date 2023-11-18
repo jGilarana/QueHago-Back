@@ -34,7 +34,7 @@ async function updateFavorite(req, res) {
       where: { id: req.params.id },
     })
 
-    if (!favoriteExists) {
+    if (favoriteExists === 0) {
       res.status(404).send("No favorite found")
     }
     return res.status(200).json(favorite)

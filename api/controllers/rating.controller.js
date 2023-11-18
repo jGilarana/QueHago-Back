@@ -33,7 +33,7 @@ async function updateRating(req, res) {
       where: { id: req.params.id },
     })
 
-    if (!ratingExists) {
+    if (ratingExists === 0) {
       res.status(404).send("No rating found")
     }
     return res.status(200).json(rating)

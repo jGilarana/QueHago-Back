@@ -32,7 +32,7 @@ async function updateUser(req, res) {
       where: { id: req.params.id },
     })
 
-    if (!userExists) {
+    if (userExists === 0) {
       res.status(404).send("NO user found")
     }
     return res.status(200).json(user)

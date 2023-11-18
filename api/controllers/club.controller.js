@@ -32,7 +32,7 @@ async function updateClub(req, res) {
     const [club, clubExists] = await Club.update(req.body, {
       where: { id: req.params.id },
     })
-    if (!clubExists) {
+    if (clubExists === 0) {
       res.status(404).send("No club found")
     }
 
