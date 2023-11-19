@@ -25,13 +25,29 @@ function checkAuth(req, res, next) {
     }
   }
 
-  function checkClub(req, res, next) {
-    if (res.locals.club.subscriptionStatus !== 1) {
-      console.log(res.locals)
-      return res.status(401).send('You must be admin for this action')  
-    } else {
-      next()  
-    }
-  }
 
-  module.exports = { checkAuth, checkAdmin, checkClub }
+  // function checkClub(req, res, next) {
+  //   const token = req.header('Authorization');
+  
+  //   if (!token) {
+  //     return res.status(401).send('Token not provided');
+  //   }
+  
+  //   try {
+  //     const decoded = jwt.verify(token, process.env.SECRET);
+  //     const userEmail = decoded.email;
+  
+  //     // Aquí puedes hacer lo que necesites con la información del usuario
+  //     if (res.locals.club.email !== userEmail || res.locals.club.subscriptionStatus !== 1) {
+  //       return res.status(401).send('You must be a company for this action');
+  //     }
+  
+  //     // Usuario válido, continúa con la siguiente middleware o ruta
+  //     next();
+  //   } catch (error) {
+  //     console.log(res.locals)
+  //     console.log(error.message);
+  //     return res.status(401).send('Invalid token');
+  //   }
+  // }
+  module.exports = { checkAuth, checkAdmin }
