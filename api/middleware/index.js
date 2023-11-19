@@ -26,7 +26,8 @@ function checkAuth(req, res, next) {
   }
 
   function checkClub(req, res, next) {
-    if (res.locals.user.role !== 'club') {
+    if (res.locals.club.subscriptionStatus !== 1) {
+      console.log(res.locals)
       return res.status(401).send('You must be admin for this action')  
     } else {
       next()  

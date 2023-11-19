@@ -4,8 +4,8 @@ const router = require('express').Router()
 
 router.get('/', checkAuth, getAllClubs)
 router.get('/:id', checkAuth, getOneClub)
-router.post('/', checkAuth, createClub)
+router.post('/', checkAuth, checkAdmin, createClub)
 router.put('/:id', checkAuth, checkAdmin, updateClub)
-router.delete('/:id', checkAuth, checkAdmin, deleteClub)
+router.delete('/:id', checkClub, deleteClub)
 
 module.exports = router
