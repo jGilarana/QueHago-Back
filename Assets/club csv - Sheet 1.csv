@@ -1,6 +1,0 @@
-id ,companyName,email,telephone,address,expirationDate,subscriptionStatus,createdAt,updatedAt
-1,Chester Canarias,chester@canarias.com,123456789,"C. Simon Bolivar, 3 Las Palmas de Gran Canaria, Las Palmas",9999-12-31 23:59:59,1,2023-11-18 2:53:24,2023-11-18 2:53:24
-2,University UP,universityfest@laspalmas.com,987654321," Parque de Santa Catalina, intercambiador, Las Palmas de Gran Canaria",9999-12-31 23:59:59,1,2023-11-18 2:53:24,2023-11-18 2:53:24
-3,Suncode,suncode@festival.com,612345987,"C.C. las Arenas, 35010 Las Palmas de Gran Canaria, Las Palmas",9999-12-31 23:59:59,1,2023-11-18 2:53:24,2023-11-18 2:53:24
-4,Oasis,oasisgrancaria@gmail.com,956751886,Barranco del Aguila,9999-12-31 23:59:59,1,2023-11-18 2:53:24,2023-11-18 2:53:24
-5,TONIO PAULE S.L,kalimaevents@gmail.com,777113313,Secret Location,9999-12-31 23:59:59,1,2023-11-18 2:53:24,2023-11-18 2:53:24
