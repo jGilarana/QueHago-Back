@@ -16,4 +16,21 @@ function checkAuth(req, res, next) {
     })
   }
 
-  module.exports = { checkAuth }
+
+  function checkAdmin(req, res, next) {
+    if (res.locals.user.role !== 'admin') {
+      return res.status(401).send('You must be admin for this action')  
+    } else {
+      next()  
+    }
+  }
+
+  function checkClub(req, res, next) {
+    if (res.locals.user.role !== 'club') {
+      return res.status(401).send('You must be admin for this action')  
+    } else {
+      next()  
+    }
+  }
+
+  module.exports = { checkAuth, checkAdmin, checkClub }
