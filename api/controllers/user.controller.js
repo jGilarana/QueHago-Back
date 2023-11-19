@@ -35,7 +35,7 @@ async function updateUser(req, res) {
     if (userExists === 0) {
       res.status(404).send("NO user found")
     }
-    return res.status(200).json(user)
+    return res.status(200).send("User updated!")
   } catch (error) {
     res.status(403).send(error.message)
   }

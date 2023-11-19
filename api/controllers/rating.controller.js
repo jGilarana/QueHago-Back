@@ -36,7 +36,7 @@ async function updateRating(req, res) {
     if (ratingExists === 0) {
       res.status(404).send("No rating found")
     }
-    return res.status(200).json(rating)
+    return res.status(200).send("rating updated!")
   } catch (error) {
     res.status(403).send(error.message)
   }

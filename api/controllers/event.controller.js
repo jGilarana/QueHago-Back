@@ -35,7 +35,7 @@ const updateEvent = async (req, res) => {
     if (eventExists === 0) {
      return res.status(404).send("No event found")
     }
-    return res.status(200).json(event)
+    return res.status(200).send("event updated!")
   } catch (error) {
     res.status(400).send(error.message)
   }
