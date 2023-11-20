@@ -63,6 +63,8 @@ async function createClubsEvent(req, res) {
   }
 }
 
+
+
 module.exports = {
   getAllClubs,
   getOneClub,
