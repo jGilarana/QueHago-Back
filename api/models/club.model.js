@@ -22,6 +22,7 @@ const Club = sequelize.define("club", {
   },
   subscriptionStatus: {
     type: DataTypes.BOOLEAN,
+    defaultValue: true
   },
 })
 

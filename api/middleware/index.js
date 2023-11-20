@@ -41,7 +41,7 @@ function checkClub(req, res, next) {
         },
       })
       
-      if (!club) return res.status(401).send("Member not found")
+      if (club.subscriptionStatus != 1) return res.status(401).send("Club Token not valid")
       res.locals.club = club
       console.log(res.locals)
       next()
@@ -54,6 +54,16 @@ function checkEmail(req, res, next) {
   const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!regexp.test(req.body.email)) {
     return res.status(401).send('checkEmail: Email not Valid');
+  } else {
+    next();
+  }
+}
+
+function checkPassword(req, res, next) {
+  const regexp = /^(?=.*[A-Z])(?=.*[!@#$%^&*()-_=+{};:'",.<>?/\\[\]^_`|~])(.{8,})$/;
+  if (!regexp.test(req.body.password)) {
+    return res.status(401).send('checkPassword: Password not Valid');
+
   } else {
     next();
   }
@@ -91,4 +101,4 @@ function checkAdmin(req, res, next) {
 //     return res.status(401).send('Invalid token');
 //   }
 // }
-module.exports = { checkAuth, checkAdmin, checkEmail, checkClub }
+module.exports = { checkAuth, checkAdmin, checkEmail, checkClub, checkPassword }
