@@ -20,6 +20,15 @@ function checkAuth(req, res, next) {
   )
 }
 
+function checkEmail(req, res, next) {
+  const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!regexp.test(req.body.email)) {
+    return res.status(401).send('checkEmail: Email not Valid');
+  } else {
+    next();
+  }
+}
+
 function checkAdmin(req, res, next) {
   if (res.locals.user.role !== "admin") {
     return res.status(401).send("You must be admin for this action")
@@ -52,4 +61,4 @@ function checkAdmin(req, res, next) {
 //     return res.status(401).send('Invalid token');
 //   }
 // }
-module.exports = { checkAuth, checkAdmin }
+module.exports = { checkAuth, checkAdmin, checkEmail }
