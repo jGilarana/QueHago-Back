@@ -79,7 +79,6 @@ async function login(req, res) {
   }
 }
 
-
 async function loginClub(req, res) {
   try {
     const club = await Club.findOne({
@@ -114,5 +113,5 @@ module.exports = {
   signup,
   login,
   signupClub,
-  loginClub
+  loginClub,
 }

@@ -18,14 +18,14 @@ const getOneEvent = async (req, res) => {
   }
 }
 
-const createEvent = async(req,res) => {
-   try {
+const createEvent = async (req, res) => {
+  try {
     const event = await Event.create(req.body)
     res.status(200).send("event created")
-   } catch (error) {
+  } catch (error) {
     res.status(403).send(error.message)
-   }
-} 
+  }
+}
 
 const updateEvent = async (req, res) => {
   try {
@@ -33,7 +33,7 @@ const updateEvent = async (req, res) => {
       where: { id: req.params.id },
     })
     if (eventExists === 0) {
-     return res.status(404).send("No event found")
+      return res.status(404).send("No event found")
     }
     return res.status(200).send("event updated!")
   } catch (error) {

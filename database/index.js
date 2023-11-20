@@ -11,10 +11,9 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT,
     logging: false,
   }
-) //DB CREATION
+)
 
 async function checkConn() {
-  //DB CONN checking function
   try {
     await sequelize.authenticate()
     console.log("Nice, you are connected!")

@@ -44,18 +44,17 @@ async function updateRating(req, res) {
 
 async function deleteRating(req, res) {
   try {
-    const rating = await Rating.destroy({ where: { id: req.params.id } } )
+    const rating = await Rating.destroy({ where: { id: req.params.id } })
     return res.status(200).json(rating)
   } catch (error) {
     return res.status(500).send(error.message)
   }
 }
 
-
 module.exports = {
-    getAllRatings,
-    getOneRating,
-    createRating,
-    updateRating,
-    deleteRating
+  getAllRatings,
+  getOneRating,
+  createRating,
+  updateRating,
+  deleteRating,
 }

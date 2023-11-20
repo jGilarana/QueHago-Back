@@ -9,15 +9,15 @@ function setRelations() {
   Event.belongsTo(Club, { onDelete: 'CASCADE', onUpdate: 'CASCADE', foreignKey: "clubId" }) //
 
   User.hasMany(Rating)
-  Rating.belongsTo(User, { onDelete: "CASCADE", foreignKey: "userId" })
+  Rating.belongsTo(User, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "userId" })
 
   Event.hasMany(Rating)
-  Rating.belongsTo(Event, { onDelete: "CASCADE", foreignKey: "eventId" })
+  Rating.belongsTo(Event, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "eventId" })
 
-  User.hasMany(Favorite, { onDelete: "CASCADE", foreignKey: "userId" })
+  User.hasMany(Favorite, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "userId" })
   Favorite.belongsTo(User)
 
-  Event.hasMany(Favorite, { onDelete: "CASCADE", foreignKey: "eventId" })
+  Event.hasMany(Favorite, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "eventId" })
   Favorite.belongsTo(Event)
 }
 

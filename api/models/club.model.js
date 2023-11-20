@@ -11,7 +11,7 @@ const Club = sequelize.define("club", {
   telephone: {
     type: DataTypes.INTEGER(20),
   },
-  password : {
+  password: {
     type: DataTypes.CHAR(255),
   },
   address: {

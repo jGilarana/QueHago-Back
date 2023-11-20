@@ -6,6 +6,4 @@ router.post('/login', login)
 router.post('/signup/club', signupClub) 
 router.post('/login/club', loginClub) 
 
-
-
 module.exports = router
