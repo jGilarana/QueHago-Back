@@ -87,7 +87,7 @@ async function getUsersFavorite(req, res) {
 }
 
 
-getUsersRating = async (req, res) => {
+async function getUsersRating(req, res)  {
   try {
     const user = await User.findByPk(res.locals.member.id)
     const events = await user.getUsersRatedEvent()

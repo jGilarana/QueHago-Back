@@ -28,27 +28,6 @@ function checkAuth(req, res, next) {
   )
 }
 
-function checkClub(req, res, next) {
-  if (!req.headers.authorization) return res.status(401).send("Token not found")
-  jwt.verify(
-    req.headers.authorization,
-    process.env.SECRET,
-    async (err, result) => {
-      if (err) return res.status(401).send("Token not valid")
-      const club = await Club.findOne({
-        where: {
-          email: result.email,
-        },
-      })
-      
-      if (club.subscriptionStatus != 1) return res.status(401).send("Club Token not valid")
-      res.locals.club = club
-      console.log(res.locals)
-      next()
-    }
-  )
-}
-
 
 function checkEmail(req, res, next) {
   const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -77,6 +56,13 @@ function checkAdmin(req, res, next) {
   }
 }
 
+function checkClub(req, res, next) {
+  if (res.locals.member.subscriptionStatus != 1) {
+    return res.status(401).send("You must be a company for this action")
+  } else {
+    next()
+  }
+}
 // function checkClub(req, res, next) {
 //   const token = req.header('Authorization');
 
