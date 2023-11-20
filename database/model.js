@@ -7,18 +7,12 @@ const User = require("../api/models/user.model")
 function setRelations() {
   Club.hasMany(Event)
   Event.belongsTo(Club, { onDelete: 'CASCADE', onUpdate: 'CASCADE', foreignKey: "clubId" }) //
+  
+  Event.belongsToMany(User, { through: Rating })
+  User.belongsToMany(Event, {through: Rating })
 
-  User.hasMany(Rating)
-  Rating.belongsTo(User, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "userId" })
-
-  Event.hasMany(Rating)
-  Rating.belongsTo(Event, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "eventId" })
-
-  User.hasMany(Favorite, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "userId" })
-  Favorite.belongsTo(User)
-
-  Event.hasMany(Favorite, { onDelete: "CASCADE", onUpdate: 'CASCADE', foreignKey: "eventId" })
-  Favorite.belongsTo(Event)
+  Event.belongsToMany(User, { through: Favorite })
+  User.belongsToMany(Event, {through: Favorite })
 }
 
 module.exports = setRelations

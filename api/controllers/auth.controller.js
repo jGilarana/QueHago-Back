@@ -51,19 +51,26 @@ async function signupClub(req, res) {
 
 async function login(req, res) {
   try {
+    const club = await Club.findOne({
+      where: {
+        email: req.body.email,
+      },
+    })
     const user = await User.findOne({
       where: {
         email: req.body.email,
       },
     })
 
-    if (!user) return res.status(404).send("Error: Email  incorrect")
+    const member = user || club
 
-    const comparePass = bcrypt.compareSync(req.body.password, user.password)
+    if (!member) return res.status(404).send("Error: Email  incorrect")
+
+    const comparePass = bcrypt.compareSync(req.body.password, member.password)
 
     if (comparePass) {
       const payload = {
-        email: user.email,
+        email: member.email,
       }
       const token = jwt.sign(payload, process.env.SECRET, {
         expiresIn: "1h",

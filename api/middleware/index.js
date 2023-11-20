@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
 const User = require("../models/user.model")
+const Club = require("../models/club.model")
 function checkAuth(req, res, next) {
   if (!req.headers.authorization) return res.status(401).send("Token not found")
   jwt.verify(
@@ -7,14 +8,22 @@ function checkAuth(req, res, next) {
     process.env.SECRET,
     async (err, result) => {
       if (err) return res.status(401).send("Token not valid")
+      const club = await Club.findOne({
+        where: {
+          email: result.email,
+        },
+      })
+      if (!club) return res.status(401).send("Club not found")
       const user = await User.findOne({
         where: {
           email: result.email,
         },
       })
-      if (!user) return res.status(401).send("User not found")
-      res.locals.user = user
 
+      const member = user || club
+
+      if (!member) return res.status(401).send("Member not found")
+      res.locals.member = member
       next()
     }
   )
