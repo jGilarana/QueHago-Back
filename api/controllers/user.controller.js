@@ -96,5 +96,18 @@ async function getUsersRating(req, res)  {
     res.status(400).error(error.message)
   }
 }
+  async function updateUsersRating(req,res) {
+    try {
+      const rating = await Rating.update(req.body, {
+        where: { id: req.params.id },
+      })   
+      const user = await User.findByPk(res.locals.member.id)
+      await user.setRating(rating)
+      return res.status(200).send('rating updated!')
+    } catch (error) {
+      return res.status(400).send(error.message)
+    }
+  }
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite,getUsersFavorite, setRating, getUsersRating }
+
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite,getUsersFavorite, setRating, getUsersRating,updateUsersRating }
