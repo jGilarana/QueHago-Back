@@ -13,21 +13,42 @@ function checkAuth(req, res, next) {
           email: result.email,
         },
       })
-      if (!club) return res.status(401).send("Club not found")
+      /* if (!club) return res.status(401).send("Club not found") */
       const user = await User.findOne({
         where: {
           email: result.email,
         },
       })
-
       const member = user || club
-
       if (!member) return res.status(401).send("Member not found")
       res.locals.member = member
+      console.log(res.locals.member.firstName)
       next()
     }
   )
 }
+
+function checkClub(req, res, next) {
+  if (!req.headers.authorization) return res.status(401).send("Token not found")
+  jwt.verify(
+    req.headers.authorization,
+    process.env.SECRET,
+    async (err, result) => {
+      if (err) return res.status(401).send("Token not valid")
+      const club = await Club.findOne({
+        where: {
+          email: result.email,
+        },
+      })
+      
+      if (!club) return res.status(401).send("Member not found")
+      res.locals.club = club
+      console.log(res.locals)
+      next()
+    }
+  )
+}
+
 
 function checkEmail(req, res, next) {
   const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -70,4 +91,4 @@ function checkAdmin(req, res, next) {
 //     return res.status(401).send('Invalid token');
 //   }
 // }
-module.exports = { checkAuth, checkAdmin, checkEmail }
+module.exports = { checkAuth, checkAdmin, checkEmail, checkClub }
