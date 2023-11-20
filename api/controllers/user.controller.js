@@ -1,3 +1,5 @@
+const Event = require("../models/event.model")
+const Rating = require("../models/rating.model")
 const User = require("../models/user.model")
 
 async function getAllUsers(req, res) {
@@ -49,4 +51,52 @@ async function deleteUser(req, res) {
   }
 }
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser }
+
+async function setFavorite(req, res) {
+  try {
+    console.log(res.locals)
+    const user = await User.findByPk(res.locals.member.id)
+    const event = await Event.findByPk(req.body.eventId)
+    await user.addUsersFavoriteEvent(event)
+    return res.status(200).send('Favorite added!')
+  } catch (error) {
+    return res.status(403).send(error.message)
+  }
+}
+
+async function setRating(req,res) {
+  try {
+    const user = await User.findByPk(res.locals.member.id)
+    const event = await Event.findByPk(req.body.eventId)
+    await user.addUsersRatedEvent(event, { through: { rate: req.body.rate } })
+    console.log(req.body)
+    return res.status(200).send('Rating added!')
+  } catch (error) {
+    return res.status(400).send('Rating not added!')
+  }
+}
+
+async function getUsersFavorite(req, res) {
+  try {
+    const user = await User.findByPk(res.locals.member.id)
+    const events = await user.getUsersFavoriteEvent()
+    return res.status(200).json(events)
+  } catch (error) {
+    return res.status(403).send(error.message)
+  }
+}
+
+
+getUsersRating = async (req, res) => {
+  try {
+    const user = await User.findByPk(res.locals.member.id)
+    const events = await user.getUsersRatedEvent()
+    res.status(200).json(events)
+  } catch (error) {
+    res.status(400).error(error.message)
+  }
+}
+
+
+
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite,getUsersFavorite, setRating, getUsersRating }

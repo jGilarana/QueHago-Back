@@ -8,11 +8,13 @@ function setRelations() {
   Club.hasMany(Event)
   Event.belongsTo(Club, { onDelete: 'CASCADE', onUpdate: 'CASCADE', foreignKey: "clubId" }) //
   
-  Event.belongsToMany(User, { through: Rating })
-  User.belongsToMany(Event, {through: Rating })
+  Event.belongsToMany(User, { through: Rating, as:'RatedByUsers' })
+  User.belongsToMany(Event, {through: Rating, as:'UsersRatedEvent' })
 
-  Event.belongsToMany(User, { through: Favorite })
-  User.belongsToMany(Event, {through: Favorite })
+  Event.belongsToMany(User, { through: Favorite, as:'FavoritedByUsers'})
+  User.belongsToMany(Event, {through: Favorite, as:'UsersFavoriteEvent' })
 }
 
 module.exports = setRelations
+
+
