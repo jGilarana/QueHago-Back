@@ -49,7 +49,7 @@ function checkPassword(req, res, next) {
 }
 
 function checkAdmin(req, res, next) {
-  if (res.locals.user.role !== "admin") {
+  if (res.locals.member.role !== "admin") {
     return res.status(401).send("You must be admin for this action")
   } else {
     next()
