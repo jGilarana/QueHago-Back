@@ -6,7 +6,7 @@ const User = require("../api/models/user.model")
 
 function setRelations() {
   Club.hasMany(Event)
-  Event.belongsTo(Club, { onDelete: 'CASCADE', onUpdate: 'CASCADE', foreignKey: "clubId" }) //
+  Event.belongsTo(Club, { onDelete: 'CASCADE', onUpdate: 'CASCADE', foreignKey: "clubId" }) 
   
   Event.belongsToMany(User, { through: Rating, as:'RatedByUsers' })
   User.belongsToMany(Event, {through: Rating, as:'UsersRatedEvent' })
@@ -16,5 +16,3 @@ function setRelations() {
 }
 
 module.exports = setRelations
-
-

@@ -1,4 +1,5 @@
 const Club = require("../models/club.model")
+const Event = require("../models/event.model")
 
 async function getAllClubs(req, res) {
   try {
@@ -51,10 +52,22 @@ async function deleteClub(req, res) {
   }
 }
 
+async function createClubsEvent(req, res) {
+  try {
+    const event = await Event.create(req.body)
+    const club = await Club.findByPk(res.locals.member.id)
+    await club.addEvent(event)
+    return res.status(200).send('Event added!')
+  } catch (error) {
+    res.status(400).send(error.message)
+  }
+}
+
 module.exports = {
   getAllClubs,
   getOneClub,
   createClub,
   updateClub,
   deleteClub,
+  createClubsEvent
 }

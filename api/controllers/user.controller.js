@@ -69,7 +69,7 @@ async function setRating(req,res) {
     const user = await User.findByPk(res.locals.member.id)
     const event = await Event.findByPk(req.body.eventId)
     await user.addUsersRatedEvent(event, { through: { rate: req.body.rate } })
-    console.log(req.body)
+ 
     return res.status(200).send('Rating added!')
   } catch (error) {
     return res.status(400).send('Rating not added!')
