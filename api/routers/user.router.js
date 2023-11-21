@@ -1,8 +1,11 @@
 const {getImage, getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile} = require('../controllers/user.controller')
 const router = require('express').Router()
 const { checkAuth, checkClub } = require('../middleware')
+const multer = require('multer')
+const upload = multer({dest: './public/uploads'})
 
-router.post('/image', getImage)
+
+router.post('/image',upload.single('file'), getImage)
 
 router.get('/', checkAuth, getAllUsers)
 router.get('/profile', checkAuth, getProfile)
