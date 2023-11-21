@@ -54,7 +54,6 @@ async function deleteUser(req, res) {
 
 async function setFavorite(req, res) {
   try {
-    console.log(res.locals)
     const user = await User.findByPk(res.locals.member.id)
     const event = await Event.findByPk(req.body.eventId)
     await user.addUsersFavoriteEvent(event)
@@ -93,21 +92,8 @@ async function getUsersRating(req, res)  {
     const events = await user.getUsersRatedEvent()
     res.status(200).json(events)
   } catch (error) {
-    res.status(400).error(error.message)
+    res.status(400).send(error.message)
   }
 }
-  async function updateUsersRating(req,res) {
-    try {
-      const rating = await Rating.update(req.body, {
-        where: { id: req.params.id },
-      })   
-      const user = await User.findByPk(res.locals.member.id)
-      await user.setRating(rating)
-      return res.status(200).send('rating updated!')
-    } catch (error) {
-      return res.status(400).send(error.message)
-    }
-  }
 
-
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite,getUsersFavorite, setRating, getUsersRating,updateUsersRating }
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite,getUsersFavorite, setRating, getUsersRating}

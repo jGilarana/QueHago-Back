@@ -39,7 +39,7 @@ function checkEmail(req, res, next) {
 }
 
 function checkPassword(req, res, next) {
-  const regexp = /^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
+  const regexp = /^(?=.*[A-Z])(?=.*[!@#$%^&*()-_=+{};:'",.<>?/\\[\]^_`|~])(.{8,})$/;
   if (!regexp.test(req.body.password)) {
     return res.status(401).send('checkPassword: Password not Valid');
 

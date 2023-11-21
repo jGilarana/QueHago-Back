@@ -5,6 +5,6 @@ const { checkEmail, checkPassword } = require('../middleware')
 router.post('/signup', checkEmail, checkPassword, signup)
 router.post('/login', login) 
 router.post('/signup/club', checkEmail, checkPassword, signupClub) 
-router.post('/login/club', loginClub) 
+router.post('/login/club', login) 
 
 module.exports = router

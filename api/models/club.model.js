@@ -4,15 +4,20 @@ const { sequelize } = require("../../database/index") // Our connection's instan
 const Club = sequelize.define("club", {
   companyName: {
     type: DataTypes.STRING(40),
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING(40),
+    allowNull: false,
   },
   telephone: {
     type: DataTypes.INTEGER(20),
+    
   },
   password: {
     type: DataTypes.CHAR(255),
+    allowNull: false
+
   },
   address: {
     type: DataTypes.CHAR(255),

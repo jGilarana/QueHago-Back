@@ -30,7 +30,7 @@ async function createRating(req, res) {
 async function updateRating(req, res) {
   try {
     const [rating, ratingExists] = await Rating.update(req.body, {
-      where: { id: req.params.id },
+      where: { eventId: req.params.id },
     })
 
     if (ratingExists === 0) {

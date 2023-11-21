@@ -8,7 +8,7 @@ const Event = sequelize.define("event", {
   },
   genre: {
     type: DataTypes.STRING(80),
-    allowNull: false,
+   
   },
   address: {
     type: DataTypes.STRING(120),
