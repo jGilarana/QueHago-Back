@@ -76,6 +76,17 @@ async function updateClubsEvent(req,res) {
   }
 }
 
+async function getClubsEvents(req, res) {
+  try {
+    const club = await Club.findByPk(res.locals.member.id)
+    console.log(res.locals)
+    const events = await club.getEvents()
+    res.status(200).json(events)
+  } catch (error) {
+    res.status(403).send(error.message)
+  }
+}
+
 module.exports = {
   getAllClubs,
   getOneClub,
@@ -83,5 +94,6 @@ module.exports = {
   updateClub,
   deleteClub,
   createClubsEvent,
-  updateClubsEvent
+  updateClubsEvent,
+  getClubsEvents
 }
