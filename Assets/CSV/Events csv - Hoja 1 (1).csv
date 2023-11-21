@@ -1,0 +1,6 @@
+id,title,genre,address,date,rooms,minimumAge,image,createdAt,updatedAt,clubId
+1,Chester New Year Eve,"Reggaeton, R&B, Dancehall","C. Simon Bolivar, 3 Las Palmas de Gran Canaria, Las Palmas",2023-12-31,1,18,https://res.cloudinary.com/djpdopxfy/image/upload/v1700578257/QueHago/Chester24_hb7nzf.png,9999-12-31,9999-12-31,1
+2,Suncode Nochebuena,"Tech-House, House, Progressive","C.C. las Arenas, 35010 Las Palmas de Gran Canaria, Las Palmas",2023-12-24,1,21,https://res.cloudinary.com/djpdopxfy/image/upload/v1700578257/QueHago/Suncode24_abqk8w.png,9999-12-31,9999-12-31,3
+3,"Oasis Taraka by ""GORDO""","Tech-House, House, Dance House",Barranco del Aguila,2023-12-08,2,21,http://res.cloudinary.com/djpdopxfy/image/upload/v1700578198/Taraka_zbbpb3.png,9999-12-31,9999-12-31,4
+4,Kalima Boat Party,"R&B, House, Regaetton, Dance, DanceHall, Trap",Secret Location,2023-12-18,2,18,https://res.cloudinary.com/djpdopxfy/image/upload/v1700578258/QueHago/KalimaBoatParty_f80pvj.png,9999-12-31,9999-12-31,5
+5,University Dia 31,"R&B, House, Regaetton, Dance, DanceHall","Intercambiador de Santa Catalina, Las Palmas de Gran Canaria",2023-12-31,2,18,https://res.cloudinary.com/djpdopxfy/image/upload/v1700578256/QueHago/University31_zj1koe.png,9999-12-31,9999-12-31,2

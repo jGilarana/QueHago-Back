@@ -24,6 +24,9 @@ const Event = sequelize.define("event", {
   minimumAge: {
     type: DataTypes.INTEGER,
   },
+  image: {
+    type: DataTypes.STRING(255),
+  }
 })
 
 module.exports = Event

@@ -24,7 +24,7 @@ async function checkConn() {
 
 async function syncModels() {
   try {
-    await sequelize.sync({ alter: true })
+    await sequelize.sync({ force: true })
     console.log("sync models succesful")
   } catch (error) {
     console.log(error)

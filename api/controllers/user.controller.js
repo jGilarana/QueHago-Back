@@ -1,7 +1,7 @@
 const Event = require("../models/event.model")
 const Rating = require("../models/rating.model")
 const User = require("../models/user.model")
-
+const cloudinary =  require('cloudinary').v2
 async function getAllUsers(req, res) {
   try {
     const user = await User.findAll()
@@ -105,4 +105,25 @@ async function getUsersRating(req, res)  {
   }
 }
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}
+
+async function getImage(req, res)  {
+  try {
+    cloudinary.config({ 
+      cloud_name: 'djpdopxfy', 
+      api_key: '859719466848547', 
+      api_secret: 'kZFpcokasmO8MBTAvji-4MBbBUo' 
+    });
+    const options = {
+      colors: true,
+      folder: 'QueHago',
+      use_filename: true
+    };
+    const result = await cloudinary.api.resource('Taraka_zbbpb3', options);
+    return res.status(200).json(result)
+  } catch (error) {
+    res.status(400).send(error.message)
+  }
+}
+
+
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile, getImage}
