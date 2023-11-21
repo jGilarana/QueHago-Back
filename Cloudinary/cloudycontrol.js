@@ -41,6 +41,9 @@ async function postImage(req, res) {
 };
 
 
+//////////////////////////////////  Event Control ////////////////////////////////
+
+
 async function postEventImage(req, res) {
   
   const options = {
@@ -64,6 +67,14 @@ async function postEventImage(req, res) {
     console.error(error);
   }
 };
+
+
+
+//////////////////////////////////  User Control ////////////////////////////////
+
+
+
+//////////////////////////////////  Club Control ////////////////////////////////
 
   module.exports = {
     postImage,

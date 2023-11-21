@@ -22,6 +22,9 @@ const Club = sequelize.define("club", {
   address: {
     type: DataTypes.CHAR(255),
   },
+  image: {
+    type: DataTypes.STRING
+  },
   expirationDate: {
     type: DataTypes.DATE,
   },
