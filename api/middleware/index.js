@@ -57,10 +57,11 @@ function checkAdmin(req, res, next) {
 }
 
 function checkClub(req, res, next) {
-  if (res.locals.member.subscriptionStatus != 1) {
-    return res.status(401).send("You must be a company for this action")
-  } else {
+  if (res.locals.member.subscriptionStatus == 1 || res.locals.member.role == "admin") {
+    console.log(res.locals)
     next()
+  } else {
+     return res.status(401).send("You must be a company for this action")
   }
 }
 
