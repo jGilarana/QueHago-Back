@@ -63,18 +63,7 @@ async function createClubsEvent(req, res) {
   }
 }
 
-async function updateClubsEvent(req,res) {
-  try {
-    const event = await Event.update(req.body, {
-      where: { id: req.params.id },
-    })   
-    const club = await Club.findByPk(res.locals.member.id)
-    await club.setEvents(event)
-    return res.status(200).send('Event updated!')
-  } catch (error) {
-    return res.status(400).send(error.message)
-  }
-}
+
 
 async function getClubsEvents(req, res) {
   try {
@@ -94,6 +83,5 @@ module.exports = {
   updateClub,
   deleteClub,
   createClubsEvent,
-  updateClubsEvent,
   getClubsEvents
 }
