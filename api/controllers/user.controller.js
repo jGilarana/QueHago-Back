@@ -105,27 +105,24 @@ async function getUsersRating(req, res)  {
   }
 }
 
-async function getImage(req, res) {
-  cloudinary.config({ 
-    cloud_name: 'djpdopxfy', 
-    api_key: '859719466848547', 
-    api_secret: 'kZFpcokasmO8MBTAvji-4MBbBUo' 
-  });
-  const options = {
-    colors: true,
-    folder: 'Quegit stHago',
-    use_filename: true
-  };
-
+async function getImage(req, res)  {
   try {
-    // Upload the image
-    const result = await cloudinary.uploader.upload(req.file.path, options);
-    console.log(result);
-    return res.status(200).json(result.public_id);
+    cloudinary.config({ 
+      cloud_name: 'djpdopxfy', 
+      api_key: '859719466848547', 
+      api_secret: 'kZFpcokasmO8MBTAvji-4MBbBUo' 
+    });
+    const options = {
+      colors: true,
+      folder: 'QueHago',
+      use_filename: true
+    };
+    const result = await cloudinary.api.resource('Taraka_zbbpb3', options);
+    return res.status(200).json(result)
   } catch (error) {
-    console.error(error);
+    res.status(400).send(error.message)
   }
-};
+}
 
 
 async function postImage(req,res) {
@@ -136,4 +133,4 @@ async function postImage(req,res) {
   }
 }
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile, getImage}
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}
