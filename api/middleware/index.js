@@ -39,7 +39,7 @@ function checkEmail(req, res, next) {
 }
 
 function checkPassword(req, res, next) {
-  const regexp = /^(?=.*[A-Z])(?=.*[!@#$%^&*()-_=+{};:'",.<>?/\\[\]^_`|~])(.{8,})$/;
+  const regexp = /^(?=.*[A-Za-z0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
   if (!regexp.test(req.body.password)) {
     return res.status(401).send('checkPassword: Password not Valid');
 
@@ -63,28 +63,5 @@ function checkClub(req, res, next) {
     next()
   }
 }
-// function checkClub(req, res, next) {
-//   const token = req.header('Authorization');
 
-//   if (!token) {
-//     return res.status(401).send('Token not provided');
-//   }
-
-//   try {
-//     const decoded = jwt.verify(token, process.env.SECRET);
-//     const userEmail = decoded.email;
-
-//     // Aquí puedes hacer lo que necesites con la información del usuario
-//     if (res.locals.club.email !== userEmail || res.locals.club.subscriptionStatus !== 1) {
-//       return res.status(401).send('You must be a company for this action');
-//     }
-
-//     // Usuario válido, continúa con la siguiente middleware o ruta
-//     next();
-//   } catch (error) {
-//     console.log(res.locals)
-//     console.log(error.message);
-//     return res.status(401).send('Invalid token');
-//   }
-// }
 module.exports = { checkAuth, checkAdmin, checkEmail, checkClub, checkPassword }
