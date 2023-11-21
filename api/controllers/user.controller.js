@@ -51,6 +51,15 @@ async function deleteUser(req, res) {
   }
 }
 
+async function getProfile(req,res) {
+  try {
+    const user = await User.findByPk(res.locals.member.id)
+    return res.status(200).json(user)
+  } catch (error) {
+    return res.status(402).send("user not found")
+  }
+}
+
 
 async function setFavorite(req, res) {
   try {
@@ -96,4 +105,4 @@ async function getUsersRating(req, res)  {
   }
 }
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite,getUsersFavorite, setRating, getUsersRating}
+module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}
