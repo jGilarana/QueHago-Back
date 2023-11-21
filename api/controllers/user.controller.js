@@ -126,4 +126,6 @@ async function getImage(req, res)  {
 }
 
 
+
+
 module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile, getImage}
