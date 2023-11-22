@@ -102,29 +102,66 @@ async function postClubImage(req, res) {
 
 
 async function postUserImage(req, res) {
-  
   const options = {
     colors: true,
     folder: 'QueHago',
     use_filename: true
   };
-  console.log(res.locals)
 
   try {
-    // Upload the image
+    // Asegúrate de que req.file contenga la información del archivo
+    if (!req.file || !req.file.path) {
+      return res.status(400).send('No file provided');
+    }
+
+    // Sube la imagen a Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path, options);
     console.log(result);
-    const [event, eventExists] = await User.update({image : result.url}, {
+
+    // Actualiza el campo 'image' en la base de datos
+    const [_, [event]] = await User.update({ image: result.url }, {
       where: { id: res.locals.member.id },
-    })
-    if (eventExists === 0) {
-      return res.status(404).send("No event found")
+      returning: true, // Asegúrate de incluir 'returning: true' para obtener la fila actualizada
+    });
+
+    if (!event) {
+      return res.status(404).send('No user found');
     }
+
+    // Si usas el mismo componente para manejar la carga, puedes eliminar el archivo localmente
+    // fs.unlinkSync(req.file.path);
+
     return res.status(200).json(result.public_id);
   } catch (error) {
     console.error(error);
+    return res.status(500).send('Internal Server Error');
   }
-};
+}
+
+// async function postUserImage(req, res) {
+  
+//   const options = {
+//     colors: true,
+//     folder: 'QueHago',
+//     use_filename: true
+//   };
+//   console.log(res.locals)
+
+//   try {
+//     // Upload the image
+//     const result = await cloudinary.uploader.upload(req.file.path, options);
+//     console.log(result);
+//     const [event, eventExists] = await User.update({image : result.url}, {
+//       where: { id: res.locals.member.id },
+//     })
+//     if (eventExists === 0) {
+//       return res.status(404).send("No event found")
+//     }
+//     return res.status(200).json(result.public_id);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
   module.exports = {
     postImage,
     getImage,

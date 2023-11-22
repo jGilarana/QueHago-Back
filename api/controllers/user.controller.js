@@ -42,6 +42,21 @@ async function updateUser(req, res) {
     res.status(403).send(error.message)
   }
 }
+
+async function updateProfile(req, res) {
+  try {
+    const [user, userExists] = await User.update(req.body, {
+      where: { id: res.locals.member.id },
+    })
+
+    if (userExists === 0) {
+      res.status(404).send("NO user found")
+    }
+    return res.status(200).send("User updated!")
+  } catch (error) {
+    res.status(403).send(error.message)
+  }
+}
 async function deleteUser(req, res) {
   try {
     const user = await User.destroy({ where: { id: req.params.id } })
@@ -107,4 +122,4 @@ async function getUsersRating(req, res)  {
 
 
 
-module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}
+module.exports = {updateProfile, getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}
