@@ -105,32 +105,6 @@ async function getUsersRating(req, res)  {
   }
 }
 
-async function getImage(req, res)  {
-  try {
-    cloudinary.config({ 
-      cloud_name: 'djpdopxfy', 
-      api_key: '859719466848547', 
-      api_secret: 'kZFpcokasmO8MBTAvji-4MBbBUo' 
-    });
-    const options = {
-      colors: true,
-      folder: 'QueHago',
-      use_filename: true
-    };
-    const result = await cloudinary.api.resource('Taraka_zbbpb3', options);
-    return res.status(200).json(result)
-  } catch (error) {
-    res.status(400).send(error.message)
-  }
-}
 
-
-async function postImage(req,res) {
-  try {
-    
-  } catch (error) {
-    
-  }
-}
 
 module.exports = { getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}

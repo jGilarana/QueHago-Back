@@ -1,5 +1,7 @@
 const cloudinary = require('.');
+const Club = require('../api/models/club.model');
 const Event = require('../api/models/event.model');
+const User = require('../api/models/user.model');
 
 
 
@@ -72,12 +74,61 @@ async function postEventImage(req, res) {
 
 //////////////////////////////////  User Control ////////////////////////////////
 
+async function postClubImage(req, res) {
+  
+  const options = {
+    colors: true,
+    folder: 'Quegit stHago',
+    use_filename: true
+  };
 
+  try {
+    // Upload the image
+    const result = await cloudinary.uploader.upload(req.file.path, options);
+    console.log(result);
+    const [event, eventExists] = await Club.update({image : result.url}, {
+      where: { id: req.params.id },
+    })
+    if (eventExists === 0) {
+      return res.status(404).send("No event found")
+    }
+    return res.status(200).json(result.public_id);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 //////////////////////////////////  Club Control ////////////////////////////////
 
+
+async function postUserImage(req, res) {
+  
+  const options = {
+    colors: true,
+    folder: 'QueHago',
+    use_filename: true
+  };
+  console.log(res.locals)
+
+  try {
+    // Upload the image
+    const result = await cloudinary.uploader.upload(req.file.path, options);
+    console.log(result);
+    const [event, eventExists] = await User.update({image : result.url}, {
+      where: { id: res.locals.member.id },
+    })
+    if (eventExists === 0) {
+      return res.status(404).send("No event found")
+    }
+    return res.status(200).json(result.public_id);
+  } catch (error) {
+    console.error(error);
+  }
+};
   module.exports = {
     postImage,
     getImage,
-    postEventImage
+    postEventImage,
+    postClubImage,
+    postUserImage
   }
