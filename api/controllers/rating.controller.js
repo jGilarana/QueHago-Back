@@ -44,7 +44,7 @@ async function updateRating(req, res) {
 
 async function deleteRating(req, res) {
   try {
-    const rating = await Rating.destroy({ where: { id: req.params.id } })
+    const rating = await Rating.destroy({ where: { eventId: req.params.id } })
     return res.status(200).json(rating)
   } catch (error) {
     return res.status(500).send(error.message)

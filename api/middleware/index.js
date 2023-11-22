@@ -13,7 +13,6 @@ function checkAuth(req, res, next) {
           email: result.email,
         },
       })
-      /* if (!club) return res.status(401).send("Club not found") */
       const user = await User.findOne({
         where: {
           email: result.email,
@@ -22,7 +21,6 @@ function checkAuth(req, res, next) {
       const member = user || club
       if (!member) return res.status(401).send("Member not found")
       res.locals.member = member
-      console.log(res.locals.member.firstName)
       next()
     }
   )
@@ -57,8 +55,8 @@ function checkAdmin(req, res, next) {
 }
 
 function checkClub(req, res, next) {
-  if (res.locals.member.subscriptionStatus == 1 || res.locals.member.role == "admin") {
-    console.log(res.locals)
+  if (res.locals.member.subscriptionStatus == 1 || res.locals.member.role === "admin") {
+    //console.log(res.locals)
     next()
   } else {
      return res.status(401).send("You must be a company for this action")
