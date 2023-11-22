@@ -32,7 +32,6 @@ async function updateRating(req, res) {
     const [rating, ratingExists] = await Rating.update(req.body, {
       where: { eventId: req.params.id },
     })
-
     if (ratingExists === 0) {
       res.status(404).send("No rating found")
     }
