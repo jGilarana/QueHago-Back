@@ -94,6 +94,21 @@ async function getClubsEvents(req, res) {
   }
 }
 
+async function updateOwnClub(req, res) {
+  try {
+    const [club, clubExists] = await Club.update(req.body, {
+      where: { id: res.locals.member.id},
+    });
+    if (clubExists === 0) {
+      res.status(404).send("No club found");
+    }
+
+    return res.status(200).send("club updated");
+  } catch (error) {
+    res.status(403).send(error.message);
+  }
+}
+
 module.exports = {
   getAllClubs,
   getOneClub,
@@ -102,4 +117,5 @@ module.exports = {
   deleteClub,
   createClubsEvent,
   getClubsEvents,
+  updateOwnClub
 };
