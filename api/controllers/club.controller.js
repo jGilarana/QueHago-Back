@@ -33,11 +33,12 @@ async function updateClub(req, res) {
     const [club, clubExists] = await Club.update(req.body, {
       where: { id: req.params.id },
     });
-    if (clubExists === 0) {
-      res.status(404).send("No club found");
-    }
-
-    return res.status(200).send("club updated");
+    if (club) {
+      return res.status(200).send("User updated!")
+      } else {
+         res.status(404).send("NO user found")
+      }
+     console.log('wtf')
   } catch (error) {
     res.status(403).send(error.message);
   }

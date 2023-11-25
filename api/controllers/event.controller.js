@@ -32,10 +32,13 @@ const updateEvent = async (req, res) => {
     const [event, eventExists] = await Event.update(req.body, {
       where: { id: req.params.id },
     })
-    if (eventExists === 0) {
-      return res.status(404).send("No event found")
-    }
-    return res.status(200).send("event updated!")
+    if (event) {
+      return res.status(200).send("User updated!")
+      } else {
+         res.status(404).send("NO user found")
+      }
+     console.log('wtf')
+  
   } catch (error) {
     res.status(400).send(error.message)
   }
