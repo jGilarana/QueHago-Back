@@ -12,8 +12,8 @@ router.get('/events', checkAuth, getClubsEvents)
 router.put('/profile', checkAuth, updateOwnClub)
 router.get('/:id', checkAuth, getOneClub)
 
-router.post('/', checkAuth, checkClub, createClub)
-router.put('/:id', checkAuth, checkClub, updateClub)
+router.post('/', checkAuth, createClub)
+router.put('/:id', checkAuth, updateClub)
 router.delete('/:id', deleteClub)
 
 module.exports = router

@@ -7,6 +7,6 @@ router.get('/', getAllEvents)
 router.get('/:id', checkAuth, getOneEvent)
 router.post('/', checkAuth, createEvent)
 router.put('/:id', checkAuth, updateEvent)
-router.delete('/:id', checkAuth, checkAdmin, deleteEvent)
+router.delete('/:id', checkAuth, deleteEvent)
 
 module.exports = router

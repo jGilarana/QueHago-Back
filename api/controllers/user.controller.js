@@ -34,10 +34,12 @@ async function updateUser(req, res) {
       where: { id: req.params.id },
     })
 
-    if (userExists === 0) {
-      res.status(404).send("NO user found")
-    }
+    if (user) {
     return res.status(200).send("User updated!")
+    } else {
+       res.status(404).send("NO user found")
+    }
+   console.log('wtf')
   } catch (error) {
     res.status(403).send(error.message)
   }
@@ -81,6 +83,9 @@ async function setFavorite(req, res) {
     const user = await User.findByPk(res.locals.member.id)
     const event = await Event.findByPk(req.body.eventId)
     await user.addUsersFavoriteEvent(event)
+    if (!event) {
+      return res.status(400).send('No event found')
+    }
     return res.status(200).send('Favorite added!')
   } catch (error) {
     return res.status(403).send(error.message)
@@ -92,7 +97,9 @@ async function setRating(req,res) {
     const user = await User.findByPk(res.locals.member.id)
     const event = await Event.findByPk(req.body.eventId)
     await user.addUsersRatedEvent(event, { through: { rate: req.body.rate } })
- 
+    if (!event) {
+      return res.status(400).send('No event found')
+    }
     return res.status(200).send('Rating added!')
   } catch (error) {
     return res.status(400).send('Rating not added!')
