@@ -110,6 +110,15 @@ async function updateOwnClub(req, res) {
   }
 }
 
+async function getOwnClub(req,res) {
+  try {
+    const club = await Club.findByPk(res.locals.member.id)
+    return res.status(200).json(club)
+  } catch (error) {
+    return res.status(402).send("Club not found")
+  }
+}
+
 module.exports = {
   getAllClubs,
   getOneClub,
@@ -118,5 +127,6 @@ module.exports = {
   deleteClub,
   createClubsEvent,
   getClubsEvents,
-  updateOwnClub
+  updateOwnClub,
+  getOwnClub
 };

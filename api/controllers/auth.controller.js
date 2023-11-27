@@ -33,7 +33,7 @@ async function signupClub(req, res) {
 
   try {
     const club = await Club.create(req.body) // create the club with the hashed password
-
+    
     const payload = {
       email: club.email,
     }
@@ -42,6 +42,7 @@ async function signupClub(req, res) {
     })
     return res.status(200).json({
       token,
+      subscriptionStatus: club.subscriptionStatus,
     })
   } catch (error) {
     console.log(error.message) // Log the error message for debugging
