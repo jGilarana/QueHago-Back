@@ -69,14 +69,19 @@ async function login(req, res) {
     const comparePass = bcrypt.compareSync(req.body.password, member.password)
 
     if (comparePass) {
+      const subscriptionStatus = member.subscriptionStatus
+      const role = member.role
       const payload = {
         email: member.email,
       }
       const token = jwt.sign(payload, process.env.SECRET, {
         expiresIn: "1h",
       })
+      console.log(member)
       return res.status(200).json({
         token,
+        subscriptionStatus,
+        role
       })
     } else {
       return res.status(404).json("Error: Email or Password incorrect")
