@@ -32,6 +32,11 @@ async function createUser(req, res) {
 
 async function updateUser(req, res) {
   try {
+    if (req.body.password) {
+      const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS))
+      const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
+      req.body.password = hashedPassword
+   }
     const [user, userExists] = await User.update(req.body, {
       where: { id: req.params.id },
     })
@@ -51,8 +56,8 @@ async function updateProfile(req, res) {
   try {
     if (req.body.password) {
        const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS))
-    const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
-    req.body.password = hashedPassword
+       const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
+       req.body.password = hashedPassword
     }
    
     const [user, userExists] = await User.update(req.body, {

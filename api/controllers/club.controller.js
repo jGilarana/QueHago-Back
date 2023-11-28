@@ -30,6 +30,11 @@ async function createClub(req, res) {
 
 async function updateClub(req, res) {
   try {
+    if (req.body.password) {
+      const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS))
+      const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
+      req.body.password = hashedPassword
+   }
     const [club, clubExists] = await Club.update(req.body, {
       where: { id: req.params.id },
     });
@@ -97,6 +102,11 @@ async function getClubsEvents(req, res) {
 
 async function updateOwnClub(req, res) {
   try {
+    if (req.body.password) {
+      const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS))
+      const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
+      req.body.password = hashedPassword
+   }
     const [club, clubExists] = await Club.update(req.body, {
       where: { id: res.locals.member.id},
     });
