@@ -2,6 +2,8 @@ const Event = require("../models/event.model")
 const Rating = require("../models/rating.model")
 const User = require("../models/user.model")
 const cloudinary =  require('cloudinary').v2
+const bcrypt = require("bcrypt")
+
 async function getAllUsers(req, res) {
   try {
     const user = await User.findAll()
@@ -47,6 +49,12 @@ async function updateUser(req, res) {
 
 async function updateProfile(req, res) {
   try {
+    if (req.body.password) {
+       const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS))
+    const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
+    req.body.password = hashedPassword
+    }
+   
     const [user, userExists] = await User.update(req.body, {
       where: { id: res.locals.member.id },
     })
@@ -59,6 +67,9 @@ async function updateProfile(req, res) {
     res.status(403).send(error.message)
   }
 }
+
+
+
 async function deleteUser(req, res) {
   try {
     const user = await User.destroy({ where: { id: req.params.id } })
