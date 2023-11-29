@@ -1,4 +1,4 @@
-const {getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile, updateProfile} = require('../controllers/user.controller')
+const {getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile, updateProfile, deleteUsersFav} = require('../controllers/user.controller')
 const { getImage, postImage, postUserImage } = require('../../Cloudinary/cloudycontrol')
 const router = require('express').Router()
 const { checkAuth, checkClub } = require('../middleware')
@@ -9,7 +9,7 @@ router.put('/post-main-image',upload.single('file'), checkAuth, postUserImage)
 router.put('/postprofile',upload.single('file'), checkAuth, updateProfile)
 router.post('/getimage',upload.single('file'), getImage)
 router.post('/postimage',upload.single('file'), postImage)
-
+router.delete('/deletefav', checkAuth, deleteUsersFav)
 
 router.get('/', checkAuth, getAllUsers)
 router.get('/profile', checkAuth, getProfile)

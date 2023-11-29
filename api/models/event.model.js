@@ -15,10 +15,10 @@ const Event = sequelize.define("event", {
     allowNull: false,
   },
   latitude : {
-    type: DataTypes.CHAR,
+    type: DataTypes.DOUBLE(20,15),
   },
   longitude : {
-    type: DataTypes.CHAR,
+    type: DataTypes.DOUBLE(20,15),
   },
   date: {
     type: DataTypes.DATE,

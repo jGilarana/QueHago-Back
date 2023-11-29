@@ -144,5 +144,19 @@ async function getUsersRating(req, res)  {
 }
 
 
+async function deleteUsersFav(req,res) {
+  try {
+    const user = await User.findByPk(res.locals.member.id)
+    const event = await Event.findByPk(req.body.eventId)
+    await user.removeUsersFavoriteEvent(event)
+    if (!event) {
+      return res.status(400).send('No event found')
+    }
+    return res.status(200).send('Favorite deleted!')
+  } catch (error) {
+    return res.status(403).send(error.message)
+  }
+}
 
-module.exports = {updateProfile, getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}
+
+module.exports = {deleteUsersFav, updateProfile, getAllUsers, getOneUser, createUser, updateUser, deleteUser, setFavorite, getUsersFavorite, setRating, getUsersRating, getProfile}
