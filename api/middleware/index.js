@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken")
 const User = require("../models/user.model")
 const Club = require("../models/club.model")
 function checkAuth(req, res, next) {
+  console.log(req.headers)
   if (!req.headers.authorization) return res.status(401).send("Token not found")
   jwt.verify(
     req.headers.authorization,

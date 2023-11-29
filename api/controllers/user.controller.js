@@ -145,9 +145,10 @@ async function getUsersRating(req, res)  {
 
 
 async function deleteUsersFav(req,res) {
+  console.log(req.params)
   try {
     const user = await User.findByPk(res.locals.member.id)
-    const event = await Event.findByPk(req.body.eventId)
+    const event = await Event.findByPk(req.params.eventId)
     await user.removeUsersFavoriteEvent(event)
     if (!event) {
       return res.status(400).send('No event found')

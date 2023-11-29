@@ -9,7 +9,7 @@ router.put('/post-main-image',upload.single('file'), checkAuth, postUserImage)
 router.put('/postprofile',upload.single('file'), checkAuth, updateProfile)
 router.post('/getimage',upload.single('file'), getImage)
 router.post('/postimage',upload.single('file'), postImage)
-router.delete('/deletefav', checkAuth, deleteUsersFav)
+router.delete('/deletefav/:eventId', checkAuth, deleteUsersFav)
 
 router.get('/', checkAuth, getAllUsers)
 router.get('/profile', checkAuth, getProfile)
