@@ -24,6 +24,12 @@ const Event = sequelize.define("event", {
     type: DataTypes.DATE,
     allowNull: false,
   },
+  openTime : {
+    type: DataTypes.TIME,
+  },
+  closeTime : {
+    type: DataTypes.TIME,
+  },
   rooms: {
     type: DataTypes.INTEGER,
   },
