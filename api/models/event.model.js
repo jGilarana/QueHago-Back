@@ -1,5 +1,5 @@
-const { DataTypes } = require("sequelize")
-const { sequelize } = require("../../database/index") // Our connection's instance
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../../database/index"); // Our connection's instance
 
 const Event = sequelize.define("event", {
   title: {
@@ -8,26 +8,25 @@ const Event = sequelize.define("event", {
   },
   genre: {
     type: DataTypes.STRING(80),
-   
   },
   address: {
     type: DataTypes.STRING(120),
     allowNull: false,
   },
-  latitude : {
-    type: DataTypes.DOUBLE(20,15),
+  latitude: {
+    type: DataTypes.DOUBLE(20, 15),
   },
-  longitude : {
-    type: DataTypes.DOUBLE(20,15),
+  longitude: {
+    type: DataTypes.DOUBLE(20, 15),
   },
   date: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  openTime : {
+  openTime: {
     type: DataTypes.TIME,
   },
-  closeTime : {
+  closeTime: {
     type: DataTypes.TIME,
   },
   rooms: {
@@ -38,7 +37,7 @@ const Event = sequelize.define("event", {
   },
   image: {
     type: DataTypes.STRING(255),
-  }
-})
+  },
+});
 
-module.exports = Event
+module.exports = Event;

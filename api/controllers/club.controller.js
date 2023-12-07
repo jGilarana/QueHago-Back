@@ -1,6 +1,6 @@
 const Club = require("../models/club.model");
 const Event = require("../models/event.model");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 async function getAllClubs(req, res) {
   try {
@@ -32,19 +32,19 @@ async function createClub(req, res) {
 async function updateClub(req, res) {
   try {
     if (req.body.password) {
-      const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS))
-      const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
-      req.body.password = hashedPassword
-   }
+      const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS));
+      const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // Hash the original password with the number we have provided.
+      req.body.password = hashedPassword;
+    }
     const [club, clubExists] = await Club.update(req.body, {
       where: { id: req.params.id },
     });
     if (club) {
-      return res.status(200).send("User updated!")
-      } else {
-         res.status(404).send("NO user found")
-      }
-     console.log('wtf')
+      return res.status(200).send("User updated!");
+    } else {
+      res.status(404).send("NO user found");
+    }
+    console.log("wtf");
   } catch (error) {
     res.status(403).send(error.message);
   }
@@ -82,7 +82,7 @@ async function createClubsEvent(req, res) {
     } else {
       const event = await Event.create(req.body);
       const club = await Club.findByPk(res.locals.member.id);
-      await club.addEvent(event)
+      await club.addEvent(event);
       return res.status(200).send("Event created");
     }
   } catch (error) {
@@ -104,12 +104,12 @@ async function getClubsEvents(req, res) {
 async function updateOwnClub(req, res) {
   try {
     if (req.body.password) {
-      const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS))
-      const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds) // Hash the original password with the number we have provided.
-      req.body.password = hashedPassword
-   }
+      const saltRounds = bcrypt.genSaltSync(parseInt(process.env.SALTROUNDS));
+      const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // Hash the original password with the number we have provided.
+      req.body.password = hashedPassword;
+    }
     const [club, clubExists] = await Club.update(req.body, {
-      where: { id: res.locals.member.id},
+      where: { id: res.locals.member.id },
     });
     if (clubExists === 0) {
       res.status(404).send("No club found");
@@ -121,12 +121,12 @@ async function updateOwnClub(req, res) {
   }
 }
 
-async function getOwnClub(req,res) {
+async function getOwnClub(req, res) {
   try {
-    const club = await Club.findByPk(res.locals.member.id)
-    return res.status(200).json(club)
+    const club = await Club.findByPk(res.locals.member.id);
+    return res.status(200).json(club);
   } catch (error) {
-    return res.status(402).send("Club not found")
+    return res.status(402).send("Club not found");
   }
 }
 
@@ -139,5 +139,5 @@ module.exports = {
   createClubsEvent,
   getClubsEvents,
   updateOwnClub,
-  getOwnClub
+  getOwnClub,
 };
