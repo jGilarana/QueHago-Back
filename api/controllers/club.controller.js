@@ -1,5 +1,6 @@
 const Club = require("../models/club.model");
 const Event = require("../models/event.model");
+const bcrypt = require("bcrypt")
 
 async function getAllClubs(req, res) {
   try {
