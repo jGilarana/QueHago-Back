@@ -38,6 +38,9 @@ const Event = sequelize.define("event", {
   image: {
     type: DataTypes.STRING(255),
   },
+  description: {
+    type: DataTypes.TEXT,
+  },
 });
 
 module.exports = Event;
